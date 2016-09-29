@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="HST">
+  <head>
+    <meta charset="utf-8">
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="vendors/angular.min.js"></script>
+    <script type="text/javascript" src="assets/script.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="vendors/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="assets/sheetrock.css"></link>
+    <title>Search History Explorer</title>
+  </head>
+  <body ng-controller="baseController">
+    <h1>See the past</h1>
+
+    <p>Every time a user logged-in to Google makes a search, this information is saved. Here's a way to explore my past searches.</p>
+
+    <button ng-click="getData()">Let's go</button>
+
+
+    <div >
+      <table id="stats">
+        <tr ng-repeat="item in searches">
+          <td>{{item.query.query_text}}</td><td> {{item.query.id[0].timestamp_usec}}</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
