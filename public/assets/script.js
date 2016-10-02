@@ -1,9 +1,28 @@
-
 var HST = angular.module('HST', []);
 
 HST.controller('baseController', ['$scope', '$http', function($scope, $http){
 
-console.log('angular working');
+
+$scope.i=0;
+
+$scope.timeUpdater = function(){
+  $scope.i++;
+
+  $scope.time= new Date ($scope.searches[$scope.i].query.id[0].timestamp_usec /1000);
+  console.log($scope.i, 'is now i');
+  // $scope.$apply();
+  // var time = $scope.time;
+};
+
+$scope.convertTimeStamps = function() {
+  for ($scope.i = 0; $scope.i < $scope.searches.length; $scope.i++) {
+      $scope.d = new Date ($scope.searches[$scope.i].query.id[0].timestamp_usec /1000);
+      $scope.searches[$scope.i].query.id[0].timestamp_usec = $scope.d;
+  }
+
+};
+
+
 
 $scope.getData = function(){
   console.log('click received!');
@@ -14,24 +33,12 @@ $http({
 }).then(function(response){
   console.log(response.data.event);
   $scope.searches= response.data.event;
+  console.log('length of seraches is ', $scope.searches.length);
+  $scope.convertTimeStamps();
+  // $scope.time= $scope.searches[$scope.i].query.id[0].timestamp_usec;
+
+
 });
-
-
-function timeConverter(UNIX_timestamp){
-  var a = new Date(UNIX_timestamp * 1000);
-  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var year = a.getFullYear();
-  var month = months[a.getMonth()];
-  var date = a.getDate();
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var sec = a.getSeconds();
-  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-  return time;
-}
-
-
-
 };
 
 }]);

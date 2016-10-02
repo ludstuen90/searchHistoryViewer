@@ -17,10 +17,14 @@
 
     <p>Every time a user logged-in to Google makes a search, this information is saved. Here's a way to explore my past searches.</p>
 
+<p>{{time}}</p>
+
+<br>
     <button ng-click="getData()">Let's go</button>
 
 
-    <div >
+
+    <div>
       <table id="stats">
         <tr ng-repeat="item in searches">
           <td>{{item.query.query_text}}</td><td> {{item.query.id[0].timestamp_usec}}</td>
