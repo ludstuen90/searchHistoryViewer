@@ -5,6 +5,7 @@ $scope.i=0;
 
 //During testing, script executes automatically
 $scope.searches = [];
+$scope.dates= [];
 
 $http({
   method:'GET',
@@ -19,13 +20,14 @@ $http({
   angular.forEach($scope.dragon, function (value, key){
     angular.forEach(value.event, function(timestamp){
       // temporarily disabling this for rendering speed
-      console.log('about to push ', timestamp.query);
+      // console.log('about to push ', timestamp.query);
       $scope.searches.push(timestamp.query);
-      console.log(timestamp.query.id);
+      // console.log(timestamp.query.id);
       angular.forEach(timestamp.query.id, function(time, key){
         // console.log(time.timestamp_usec, key);
         $scope.D = new Date(time.timestamp_usec / 1000);
-        console.log($scope.D);
+        // console.log($scope.D);
+        $scope.dates.push($scope.D);
         timestamp.query.id[key] = $scope.D;
       });
 
@@ -42,6 +44,8 @@ $http({
 
     });
   });
+}).then(function(){
+  console.log($scope.dates);
 });
 
 // $scope.timeUpdater = function(){
