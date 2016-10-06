@@ -7,6 +7,8 @@ $scope.i=0;
 $scope.searches = [];
 $scope.dates= [];
 
+
+
 $http({
   method:'GET',
   url: '/data/myRecords.json',
@@ -64,8 +66,45 @@ $scope.convertTimeStamps = function() {
   }
 };
 
-$scope.getData = function(){
+
+$scope.testSend = function(){
+console.log('test send initiated');
+  var sendTest = $scope.dates;
+  localStorage.setItem("dates", $scope.dates);
+
+
+  // console.log(sendTest);
+  //
+  // $http({
+  //   method: 'POST',
+  //   url: '/sendTimes',
+  //   data: sendTest
+  // });
+
+
+  // $http({
+  //   method: 'POST',
+  //   url: '/sendTimes',
+  //   data: sendTest
+  // }).then(function(){
+  //   console.log('completed send');
+  // });
+
+};
+
+$scope.saveQuery = function(){
   console.log('click received!');
+  console.log($scope.dates);
+
+
+  // $http({
+  //   method: 'POST',
+  //   url: '/sendTimes',
+  //   data: $scope.dates
+  // }).then(function(){
+  //   console.log('complete');
+  // });
+
   // $http({
   //   method: 'GET',
   //   url: '/data/1.json'
@@ -93,8 +132,5 @@ $scope.getData = function(){
 //   $scope.searches= response.data.event;
 //   $scope.convertTimeStamps();
 // });
-
-
-
 };
 }]);
