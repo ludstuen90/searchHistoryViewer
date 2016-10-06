@@ -1,5 +1,12 @@
+table {
+  table-layout: fixed;
+}
+
+
 #stats {
   border:2px solid;
+  table-layout: fixed;
+
 }
 
 #stats td {

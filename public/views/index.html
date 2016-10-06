@@ -25,9 +25,9 @@
 
 
     <div>
-      <table id="stats">
-        <tr ng-repeat="item in searches ">
-          <td>{{item.query.query_text}}</td><td> {{item.query.id[0].timestamp_usec}}</td>
+      <table ng-repeat="item in searches " id="stats">
+        <tr >
+          <td>{{item.query_text}}</td><td>{{item.id}}</td>
         </tr>
       </table>
     </div>

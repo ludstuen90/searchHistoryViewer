@@ -4,23 +4,40 @@ HST.controller('baseController', ['$scope', '$http', function($scope, $http){
 $scope.i=0;
 
 //During testing, script executes automatically
-
+$scope.searches = [];
 
 $http({
   method:'GET',
   url: '/data/myRecords.json',
 }).then(function(response){
   // console.log(response.data);
+  // $scope.searches = response.data;
   $scope.dragon = response.data;
-  console.log($scope.dragon);
+  // console.log($scope.dragon);
 }).then(function(){
   console.log('made it here');
   angular.forEach($scope.dragon, function (value, key){
-
     angular.forEach(value.event, function(timestamp){
+      console.log('about to push ', timestamp.query);
+      $scope.searches.push(timestamp.query);
+
+
+
+
+
+
+
       //this logs out every serach query
       // console.log(timestamp.query);
-      console.log(timestamp.query);
+
+      // logs out every timestamp array  for each search
+      // console.log(timestamp.query.id);
+
+      // logs out every query I've ever made!
+      // console.log(timestamp.query.query_text);
+
+
+
     });
 
   });
