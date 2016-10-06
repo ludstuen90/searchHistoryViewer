@@ -2,3 +2,4 @@
 .DS_Store
 *.log
 *.csv
+node_modules
