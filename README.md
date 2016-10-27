@@ -1,6 +1,6 @@
 # searchHistoryViewer
 
-Every search executed by someone logged into a Google account is saved. As decades drag on, this data piles up on the disks of Google servers. 
+Every search executed by someone logged into a Google account is saved. As decades drag on, this data piles up on the disks of Google servers.
 
 This project is an attempt to explore, visualize and understand this data.
 
@@ -10,3 +10,5 @@ At last check, users are able to download their entire dataset from Google by cl
 https://support.google.com/accounts/answer/3024190?hl=en
 
 Please note: Google may take some time to prepare this file for you.
+
+Check back soon for updates as this project evolves.
